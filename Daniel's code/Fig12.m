@@ -42,7 +42,7 @@ for kk=1:length(sigma_mat(:))
     func = @(x) -(exp(-0.5*sigma1^2*x.^2) - exp(-0.5*sigma2^2*x.^2));
 %     func = @(x) -((2*normcdf(L/sigma1)-1)*exp(-0.5*sigma1^2*x.^2) - (2*normcdf(L/sigma2)-1)*exp(-0.5*sigma2^2*x.^2));
     k_star=fminbnd(func,0.1*2*pi/sigma2,10*2*pi/sigma1)
-    scale_analytical(kk)=2*pi/k_star;
+    scale_analytical(kk)=(2/sqrt(3))*2*pi/k_star;
 end
 
 reg_coeffs=[ones(length(sigma_mat(:)),1), sigma_mat(:)]\scale(:);
